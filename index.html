@@ -1352,90 +1352,26 @@
 
     <!-- International Donors Pane -->
     <div class="donation-pane" id="pane-intl">
-      <div class="accounts-grid">
-        <!-- Online Card/PayPal Portal Card -->
-        <div class="account-card intl-card">
-          <div>
-            <div class="bank-logo-row" style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem;">
-              <div class="bank-icon" style="background: var(--ink); color: var(--white);">
-                <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
-                  <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
-                </svg>
-              </div>
-              <div>
-                <div class="bank-name">Online Donations</div>
-                <div class="bank-type">Secure Credit/Debit & PayPal</div>
-              </div>
-            </div>
-            
-            <p style="font-size: 13px; color: var(--ink-mid); line-height: 1.5; margin-bottom: 1rem;">
-              Make an instant, global contribution safely in USD, GBP, or EUR. Supports Visa, MasterCard, Amex, and PayPal.
-            </p>
-          </div>
-
-          <div class="pay-options">
-            <button class="btn-pay-online" onclick="alert('Thank you! In a live environment, this connects to Flutterwave/Paystack global payment gateways.')">
-              Donate with Card
-            </button>
-            <button class="btn-pay-online paypal" onclick="alert('Thank you! In a live environment, this opens a secure PayPal checkout portal.')">
-              Donate with PayPal
-            </button>
-            
-            <div class="card-icons">
-              <!-- Visa -->
-              <svg viewBox="0 0 24 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <rect width="24" height="15" rx="2" fill="#1A1F71"/>
-                <path d="M7.5 10.5 L6.8 6.5 H5.5 L6.2 10.5 H7.5 Z M12.5 6.5 H10.5 L10 9 H9.2 L8.8 6.5 H7.5 L8.5 10.5 H9.8 L10.8 7.5 H11.2 L11.5 10.5 H12.8 L13.5 6.5 H12.5 Z" fill="white"/>
-              </svg>
-              <!-- MasterCard -->
-              <svg viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="24" height="15" rx="2" fill="#0A0A0A"/>
-                <circle cx="10" cy="7.5" r="4.5" fill="#EB001B"/>
-                <circle cx="14" cy="7.5" r="4.5" fill="#F79E1B" fill-opacity="0.8"/>
-              </svg>
-              <!-- PayPal -->
-              <svg viewBox="0 0 24 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <rect width="24" height="15" rx="2" fill="#003087"/>
-                <path d="M10 4 H8.5 L7.2 11 H8.7 L9.1 9 H9.7 C11 9 11.8 8.3 12 7.1 C12.2 5.9 11.5 4 10 4 Z" fill="white"/>
-              </svg>
-            </div>
-          </div>
+      <div style="background: var(--white); border: 1px solid rgba(200, 150, 42, 0.2); border-radius: var(--radius-lg); padding: clamp(2.5rem, 6vw, 4.5rem) 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.02); transition: all 0.3s ease;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gold);"></div>
+        
+        <div style="width: 56px; height: 56px; background: var(--gold-light); color: var(--gold-deep); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+          <!-- Globe / Compass Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
         </div>
-
-        <!-- SWIFT Wire Card -->
-        <div class="account-card">
-          <div class="bank-logo-row" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
-            <img src="zenith_logo.png" alt="Zenith Bank Logo" style="height: 32px; max-width: 140px; object-fit: contain;">
-            <div style="text-align: right;">
-              <div class="bank-name" style="font-size: 13px; font-weight: 600; color: var(--ink);">Zenith Bank PLC</div>
-              <div class="bank-type" style="font-size: 11px; color: var(--ink-light); margin-top: 2px;">International Wire (USD)</div>
-            </div>
-          </div>
-
-          <div class="account-label">SWIFT Code</div>
-          <div class="account-number" id="swift-code" style="font-size: 1.3rem; letter-spacing: 0.05em;">ZENINILAAAXXX</div>
-
-          <div class="account-label">USD Account Number</div>
-          <div class="account-number" id="usd-num" style="font-size: 1.3rem;">5070837122</div>
-
-          <div class="account-name-label">Account Name</div>
-          <div class="account-name">Queenvee Chess Initiative for IDP camp</div>
-
-          <button class="copy-btn" onclick="copyAccount('usd-num', this)">
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M5 3V2.5C5 1.67 5.67 1 6.5 1H11.5C12.33 1 13 1.67 13 2.5V7.5C13 8.33 12.33 9 11.5 9H11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-            Copy USD Account
-          </button>
-
-          <!-- Hidden 'I've Paid' button revealed after copying -->
-          <div class="ive-paid-container">
-            <button class="btn-done" onclick="openDonationModal('Zenith Bank PLC (USD SWIFT)')">
-              I've Paid — Submit Details
-            </button>
-          </div>
+        
+        <h3 style="font-family: 'EB Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.2;">Coming Soon for International Donors</h3>
+        
+        <p style="font-size: 14px; color: var(--ink-mid); max-width: 480px; line-height: 1.65; margin-bottom: 1.75rem;">
+          We are currently setting up secure global card payment gateways (PayPal, Stripe, and Flutterwave) and validating SWIFT wire accounts to safely receive international donations in USD, EUR, and GBP.
+        </p>
+        
+        <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-deep); background: rgba(200, 150, 42, 0.08); padding: 7px 16px; border-radius: 20px; border: 1px dashed rgba(200, 150, 42, 0.25); display: inline-block;">
+          Launching Next Month
         </div>
       </div>
     </div>
