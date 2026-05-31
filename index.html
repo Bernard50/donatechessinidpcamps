@@ -716,49 +716,7 @@
 
   .footer-links a:hover { color: rgba(255,255,255,0.75); }
 
-  /* DARK THEME VARIABLES */
-  [data-theme="dark"] {
-    --ink: #faf9f6;
-    --ink-mid: #c5c4bf;
-    --ink-light: #9a9a92;
-    --surface: #10100e;
-    --white: #181816;
-    --border: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(255, 255, 255, 0.18);
-    --gold-light: #2c2518;
-    --green-light: #16241b;
-  }
 
-  .theme-toggle-btn {
-    background: rgba(26, 26, 24, 0.05);
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--ink-mid);
-    transition: all 0.2s ease;
-    margin-right: 12px;
-    padding: 0;
-  }
-
-  .theme-toggle-btn:hover {
-    background: rgba(26, 26, 24, 0.1);
-    color: var(--ink);
-    transform: scale(1.05);
-  }
-
-  [data-theme="dark"] .theme-toggle-btn {
-    background: rgba(255, 255, 255, 0.06);
-    color: #faf9f6;
-  }
-
-  [data-theme="dark"] .theme-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-  }
 
   /* MODAL AND FORM STYLING */
   .modal-overlay {
@@ -1123,6 +1081,60 @@
       transform: translateY(0);
     }
   }
+
+  /* Mobile and general responsive adjustments */
+  @media (max-width: 600px) {
+    nav {
+      padding: 0 1rem;
+      height: 56px;
+    }
+    .nav-logo {
+      gap: 8px;
+    }
+    .nav-logo-icon {
+      width: 28px;
+      height: 28px;
+    }
+    .nav-name {
+      font-size: 14px;
+    }
+    .nav-name span {
+      display: none; /* Hide long subtext on small screens to save space */
+    }
+    .nav-cta {
+      padding: 7px 14px;
+      font-size: 12px;
+    }
+    .hero, section, .section-divider, .mission-strip, footer {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .donation-toggle-container {
+      flex-direction: column;
+      gap: 6px;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+    .toggle-tab {
+      background: rgba(26,26,24,0.05);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      font-size: 12px;
+      border: 1px solid rgba(26,26,24,0.06);
+    }
+    .toggle-tab.active {
+      background: var(--white);
+      border-color: var(--gold);
+    }
+    .modal-card {
+      padding: 1.5rem 1rem;
+      border-radius: var(--radius);
+    }
+  }
 </style>
 </head>
 <body>
@@ -1136,24 +1148,6 @@
     </div>
   </div>
   <div style="display: flex; align-items: center;">
-    <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
-      <!-- Sun Icon -->
-      <svg id="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; display: none;">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.72" x2="5.64" y2="18.3"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-      </svg>
-      <!-- Moon Icon -->
-      <svg id="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; display: block;">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-      </svg>
-    </button>
     <a href="#donate" class="nav-cta">Donate Now</a>
   </div>
 </nav>
@@ -1793,45 +1787,9 @@
     });
   });
 
-  // Theme management (Dark / Light Mode)
-  function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  }
-
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    
-    const sunIcon = document.getElementById('theme-sun');
-    const moonIcon = document.getElementById('theme-moon');
-    
-    if (theme === 'dark') {
-      sunIcon.style.display = 'block';
-      moonIcon.style.display = 'none';
-    } else {
-      sunIcon.style.display = 'none';
-      moonIcon.style.display = 'block';
-    }
-  }
-
-  function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
-      setTheme('light');
-    } else {
-      setTheme('dark');
-    }
-  }
-
-  // Initialize theme on load
-  initTheme();
+  // Force light mode and clear any previous dark theme settings
+  localStorage.removeItem('theme');
+  document.documentElement.removeAttribute('data-theme');
 </script>
 </body>
 </html>
